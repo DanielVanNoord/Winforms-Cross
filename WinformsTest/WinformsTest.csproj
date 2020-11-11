@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net5.0-windows;net5.0</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'net5.0-windows' and '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))'">
+      <PropertyGroup>
+        <UseWindowsForms>true</UseWindowsForms>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Core.System.Windows.Forms" Version="1.0.0-alpha2" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+</Project>
